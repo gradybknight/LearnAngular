@@ -1,3 +1,5 @@
+coursework from [Angular Fundamentals on Pluralsight](https://app.pluralsight.com/library/courses/angular-fundamentals/description)
+
 # NgFundamentals
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
