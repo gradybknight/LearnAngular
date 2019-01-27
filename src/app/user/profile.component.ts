@@ -22,8 +22,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private router:Router, 
     private authService:AuthService,
-    @Inject(TOASTR_TOKEN) private toastr:Toastr ) {
-    
+    @Inject(TOASTR_TOKEN) private toastr: Toastr) {
+
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
   saveProfile(formValues) {
     if (this.profileForm.valid) {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
-      this.toastr.success('profile saved');
+      this.toastr.success('Profile Saved');
     }
   }
 

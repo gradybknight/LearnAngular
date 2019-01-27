@@ -21,23 +21,24 @@ export class EventService {
   }
 
   updateEvent(event) {
-    let index = EVENTS.findIndex(x => x.id = event.id);
-    EVENTS[index] = event;
+    let index = EVENTS.findIndex(x => x.id = event.id)
+    EVENTS[index] = event
   }
 
-  searchSessions(searchTerm:string) {
-    let term = searchTerm.toLocaleLowerCase();
-    let results: ISession[] = []; 
+  searchSessions(searchTerm: string) {
+    var term = searchTerm.toLocaleLowerCase();
+    var results: ISession[] = [];
 
     EVENTS.forEach(event => {
-      let matchingSessions = event.sessions.filter(session => session.name.toLocaleLowerCase().indexOf(term) > -1);
+      var matchingSessions = event.sessions.filter(session => session.name.toLocaleLowerCase().indexOf(term) > -1);
       matchingSessions = matchingSessions.map((session:any) => {
-        session.eventID = event.id;
+        session.eventId = event.id;
         return session;
       })
       results = results.concat(matchingSessions);
     })
-    let emitter = new EventEmitter(true);
+
+    var emitter = new EventEmitter(true);
     setTimeout(() => {
       emitter.emit(results);
     }, 100);

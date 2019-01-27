@@ -13,22 +13,21 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  VoterService,
+  LocationValidator
 } from './events/index'
-import { TOASTR_TOKEN, 
-  Toastr, 
-  JQ_TOKEN, 
-  CollapsibleWellComponent, 
-  SimpleModalComponent,
-  ModalTriggerDirective} from './common/index'
 import { EventsAppComponent } from './events-app.component'
 import { NavBarComponent } from './nav/nav-bar.component'
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent} from './common/index';
 import { appRoutes } from './routes'
 import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
+import { ModalTriggerDirective } from './common/modalTrigger.directive';
 
- let toastr:Toastr  = window['toastr'];
- let jQuery  = window['$'];
+let toastr:Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   imports: [
@@ -48,21 +47,19 @@ import { AuthService } from './user/auth.service'
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    UpvoteComponent,
+    ModalTriggerDirective,
+    LocationValidator,
+    DurationPipe
   ],
   providers: [
     EventService, 
-    {
-      provide: TOASTR_TOKEN,
-      useValue: toastr
-    }, {
-      provide: JQ_TOKEN,
-      useValue: jQuery
-    }, 
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     EventRouteActivator,
     EventListResolver,
+    VoterService,
     AuthService,
     { 
       provide: 'canDeactivateCreateEvent', 
